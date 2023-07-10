@@ -1,6 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 
 package com.mycompany.metodo_burbuja_incersion;
 
@@ -34,10 +31,23 @@ public class Metodo_burbuja_incersion {
         int opcion = sc.nextInt();
             switch (opcion) {
                 case 1 -> {
+                    
                     System.out.println("-----------------------------------------------\n");
-                    mB(vector);
-                    System.out.println("Vector utilizando el Metodo de burbuja: \n");
+                    System.out.println("Selecciona que mnera quieres que se muestre el vector: \n");
+                    System.out.println("(1). Ascendente \n");
+                    System.out.println("(2). Descendente \n");
                     System.out.println("-----------------------------------------------\n");
+                    opcion = sc.nextInt();
+                    if (opcion == 1){
+                        mB(vector, true);
+                        System.out.println("Vector ordenado de manera ascendente: \n");
+                    }else if(opcion == 2){
+                        mB(vector, false);
+                        System.out.println("Vector ordenado de manera descendente: \n");
+                        
+                    }else{
+                        System.out.println("Opcion invalida.");
+                    }
                 }
                 case 2 -> {
                     System.out.println("-----------------------------------------------\n");
@@ -59,11 +69,12 @@ public class Metodo_burbuja_incersion {
         System.out.println("-----------------------------------------------\n");
         System.out.println("Ingrese la cantidad de espacios en el vector: ");
     }
-    public static void mB(int[] vector){
+    public static void mB(int[] vector, boolean ascending){
         int n = vector.length;
+        int signo = ascending ? 1 : -1;
         for (int i = 0; i < n -1; i++){
             for(int j = 0; j < n - i - 1; j++){
-                if(vector[j] > vector[j + 1]){
+                if(vector[j] * signo > vector[j + 1] * signo){
                     int temp = vector[j];
                     vector[j] = vector[j + 1];
                     vector[j+1] = temp;
